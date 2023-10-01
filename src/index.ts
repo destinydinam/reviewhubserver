@@ -4,6 +4,9 @@ import { handleAmazon } from "./Functions/handleAmazon";
 const app = express();
 
 const base_url = process.env.BASEURL;
+const port = process.env.PORT || 5000;
+console.log("base_url:", base_url);
+console.log("port:", port);
 
 app.get("/v1/api/amazon", async (req, res) => {
   const req_url = new URL(base_url + req.url);
@@ -32,6 +35,6 @@ app.get("/v1/api/amazon", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log("Server started");
+app.listen(port, () => {
+  console.log("Server started on port: ", port);
 });
