@@ -25,15 +25,17 @@ export const handleAmazon = async (keyword: string) => {
   page.setDefaultNavigationTimeout(900000);
   await page.goto("https://www.amazon.com/", { waitUntil: "load" });
   const title = await page.title();
-  console.log("handleAmazon ~ title:", title);
 
   try {
     await page.waitForSelector("#twotabsearchtextbox");
   } catch (error) {
     console.log("text box error:", error);
   }
+  console.log("handleAmazon ~ title:", title);
 
   await page.type("#twotabsearchtextbox", keyword);
+
+  console.log("after type");
 
   const search = await page.$("#nav-search-submit-button");
 
