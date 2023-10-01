@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "NodeNext" /* Specify what module code is generated. --> from fireship*/,
+    "moduleResolution": "nodenext" /* Specify how TypeScript looks up a file from a given module specifier. --> fireship*/,
+    "sourceMap": true /* Create source map files for emitted JavaScript files --> from fireship */,
+    "outDir": "dist" /* Specify an output folder for all emitted files. --> fireship */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "noEmitOnError": false /* Disable emitting files if any type checking errors are reported. */
+  },
+  "include": ["src/**/*"]
+}
