@@ -24,6 +24,8 @@ export const handleAmazon = async (keyword: string) => {
   page.setDefaultTimeout(900000);
   page.setDefaultNavigationTimeout(900000);
   await page.goto("https://www.amazon.com/", { waitUntil: "load" });
+  const title = await page.title();
+  console.log("handleAmazon ~ title:", title);
 
   try {
     await page.waitForSelector("#twotabsearchtextbox");
