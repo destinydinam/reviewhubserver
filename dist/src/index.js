@@ -15,7 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const handleAmazon_1 = require("./Functions/handleAmazon");
 const app = (0, express_1.default)();
-const base_url = "http://213.52.129.206";
+const base_url = process.env.BASEURL || "http://localhost:5000";
+const port = process.env.PORT || 5000;
+console.log("base_url:", base_url);
+console.log("port:", port);
 app.get("/v1/api/amazon", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const req_url = new URL(base_url + req.url);
@@ -41,7 +44,7 @@ app.get("/v1/api/amazon", (req, res) => __awaiter(void 0, void 0, void 0, functi
         return null;
     }
 }));
-app.listen(process.env.PORT || 3001, () => {
-    console.log("Server started");
+app.listen(port, () => {
+    console.log("Server started on port: ", port);
 });
 //# sourceMappingURL=index.js.map

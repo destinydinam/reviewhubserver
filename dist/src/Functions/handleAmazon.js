@@ -34,13 +34,16 @@ const handleAmazon = (keyword) => __awaiter(void 0, void 0, void 0, function* ()
     page.setDefaultTimeout(900000);
     page.setDefaultNavigationTimeout(900000);
     yield page.goto("https://www.amazon.com/", { waitUntil: "load" });
+    const title = yield page.title();
     try {
         yield page.waitForSelector("#twotabsearchtextbox");
     }
     catch (error) {
         console.log("text box error:", error);
     }
+    console.log("handleAmazon ~ title:", title);
     yield page.type("#twotabsearchtextbox", keyword);
+    console.log("after type");
     const search = yield page.$("#nav-search-submit-button");
     try {
         yield (search === null || search === void 0 ? void 0 : search.click());
@@ -60,8 +63,8 @@ const handleAmazon = (keyword) => __awaiter(void 0, void 0, void 0, function* ()
     const links = yield page.evaluate(() => Array.from(new Set(Array.from(document.querySelectorAll("a.a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal")).map((link) => link.href))));
     console.log("handleAmazon ~ links:", links.length);
     const product_reviews = [];
-    // because of the delay, we reduce the number of products to 10
-    const links_length = links.length > 10 ? 10 : links.length;
+    // because of the delay, we reduce the number of products to 5
+    const links_length = links.length > 5 ? 5 : links.length;
     for (let i = 0; i < links_length; i++) {
         const link = links[i];
         const newPage = yield browser.newPage();
