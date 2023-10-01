@@ -75,9 +75,9 @@ export const handleAmazon = async (keyword: string) => {
 
   const product_reviews: Product_Review[] = [];
 
-  // because of the delay, we reduce the number of products to 5
+  // because of the delay, we reduce the number of products to 3
 
-  const links_length = links.length > 5 ? 5 : links.length;
+  const links_length = links.length > 3 ? 3 : links.length;
 
   for (let i = 0; i < links_length; i++) {
     const link = links[i];
@@ -125,9 +125,9 @@ export const handleAmazon = async (keyword: string) => {
 
     const review_elements = await newPage.$$(".a-section.review.aok-relative");
 
-    // because of the delay, we reduce the number of reviews per product to 5
+    // because of the delay, we reduce the number of reviews per product to 3
     const review_length =
-      review_elements.length > 5 ? 5 : review_elements.length;
+      review_elements.length > 3 ? 3 : review_elements.length;
 
     for (let i = 0; i < review_length; i++) {
       const review_element = review_elements[i];

@@ -14,12 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const handleAmazon_1 = require("./Functions/handleAmazon");
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 const base_url = process.env.BASEURL || "http://localhost:5000";
 const port = process.env.PORT || 5000;
 console.log("base_url:", base_url);
 console.log("port:", port);
-app.get("/v1/api/amazon", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/v1/api/amazon", (0, cors_1.default)(), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const req_url = new URL(base_url + req.url);
     if (!req_url.search)

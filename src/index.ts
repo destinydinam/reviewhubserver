@@ -1,6 +1,6 @@
 import express from "express";
 import { handleAmazon } from "./Functions/handleAmazon";
-import cors from cors;
+import cors from "cors";
 
 const app = express();
 
@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 console.log("base_url:", base_url);
 console.log("port:", port);
 
-app.get("/v1/api/amazon", async (req, res) => {
+app.get("/v1/api/amazon", cors(), async (req, res) => {
   const req_url = new URL(base_url + req.url);
 
   if (!req_url.search)
