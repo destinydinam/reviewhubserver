@@ -1,7 +1,10 @@
 import express from "express";
 import { handleAmazon } from "./Functions/handleAmazon";
+import cors from cors;
 
 const app = express();
+
+app.use(cors());
 
 const base_url = process.env.BASEURL || "http://localhost:5000";
 const port = process.env.PORT || 5000;
