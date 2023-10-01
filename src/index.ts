@@ -3,7 +3,7 @@ import { handleAmazon } from "./Functions/handleAmazon";
 
 const app = express();
 
-const base_url = "http://213.52.129.206";
+const base_url = process.env.BASEURL;
 
 app.get("/v1/api/amazon", async (req, res) => {
   const req_url = new URL(base_url + req.url);
