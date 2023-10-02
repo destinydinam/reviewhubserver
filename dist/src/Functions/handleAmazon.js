@@ -63,8 +63,8 @@ const handleAmazon = (keyword) => __awaiter(void 0, void 0, void 0, function* ()
     const links = yield page.evaluate(() => Array.from(new Set(Array.from(document.querySelectorAll("a.a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal")).map((link) => link.href))));
     console.log("handleAmazon ~ links:", links.length);
     const product_reviews = [];
-    // because of the delay, we reduce the number of products to 5
-    const links_length = links.length > 5 ? 5 : links.length;
+    // because of the delay, we reduce the number of products to 3
+    const links_length = links.length > 3 ? 3 : links.length;
     for (let i = 0; i < links_length; i++) {
         const link = links[i];
         const newPage = yield browser.newPage();
@@ -100,8 +100,8 @@ const handleAmazon = (keyword) => __awaiter(void 0, void 0, void 0, function* ()
             console.log("could not find .a-section.review.aok-relative");
         }
         const review_elements = yield newPage.$$(".a-section.review.aok-relative");
-        // because of the delay, we reduce the number of reviews per product to 5
-        const review_length = review_elements.length > 5 ? 5 : review_elements.length;
+        // because of the delay, we reduce the number of reviews per product to 3
+        const review_length = review_elements.length > 3 ? 3 : review_elements.length;
         for (let i = 0; i < review_length; i++) {
             const review_element = review_elements[i];
             try {
